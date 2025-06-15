@@ -2,6 +2,7 @@ import allure
 import requests
 from api_clients.base_client import BaseClient
 from data.url_endpoints import REGISTER_COURIER_ENDPOINT as reg_url
+from data.url_endpoints import COURIER_LOGIN_ENDPOINT as login_url
 from json.decoder import JSONDecodeError
 from utils.helpers import generate_random_string
 
@@ -21,6 +22,17 @@ class CourierClient(BaseClient):
         except JSONDecodeError:
             return resp.status_code, resp.text
 
+    @allure.step('Логин курьера в систему')
+    def courier_login(self, login, password):
+        login_data = {
+            "login": login,
+            "password": password
+        }
+        resp = self._post(login_url, data=login_data)
+        try:
+            return resp.status_code, resp.json()
+        except JSONDecodeError:
+            return resp.status_code, resp.text
 
 
     @staticmethod

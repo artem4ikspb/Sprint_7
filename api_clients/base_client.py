@@ -13,7 +13,7 @@ class BaseClient:
         url = self._build_url(endpoint)
         resp = self.session.request(
             url=url,
-            method=method,
+            method=method, 
             **kwargs
         )
         return resp
