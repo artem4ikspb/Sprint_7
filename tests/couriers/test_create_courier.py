@@ -24,6 +24,6 @@ class TestCreateCourier:
             'Create courier w/o first name'
         ]
     )
-    def test_create_courier(self, courier_client, login, password, first_name, result):
-        resp = courier_client.register_new_courier(login, password, first_name)
+    def test_create_courier(self, courier_client_w_data, login, password, first_name, result):
+        resp = courier_client_w_data.register_new_courier(login, password, first_name)
         assert resp[0] == result['code'] and resp[1] == result['body']

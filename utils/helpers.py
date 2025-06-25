@@ -7,3 +7,7 @@ def generate_random_string(length=9):
     letters = string.ascii_lowercase
     random_string = ''.join(random.choice(letters) for i in range(length))
     return random_string
+
+
+def format_string(text: str, value):
+    return text.format(value)
